@@ -26,6 +26,11 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - Autenticação e Autorização de Usuários (Role-based)
 
 ## 📋 Roadmap (Tasks)
+
+## 📊 Progresso
+
+⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 0%
+
 ### 🏗️ Estrutura Inicial
 - [x] Configurar projeto Spring Boot (Gradle)
 - [x] Docker para base de dados teste 
