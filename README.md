@@ -27,11 +27,10 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 ## 📋 Roadmap (Tasks)
 ### 🏗️ Estrutura Inicial
-- [ ] Configurar projeto Spring Boot (Gradle)
-- [ ] Docker para base de dados teste 
-- [ ] Configurar conexão com banco de dados (application.yml e application-dev.yml)
-- [ ] Configurar Lombok e Flyway
-- [ ] Estruturar pacotes do projeto (Controller, Service, Repository, Model, DTO)
+- [x] Configurar projeto Spring Boot (Gradle)
+- [x] Docker para base de dados teste 
+- [x] Configurar conexão com banco de dados (application.yml e application-dev.yml)
+- [x] Configurar Lombok e Liquibase
 
 ### 🗄️ Módulo: Clientes
 - [ ] Criar entidade Cliente (Model)
@@ -116,7 +115,7 @@ src/
  └─ main/
      ├─ java/
      │    └─ com/
-     │         └─ erp/
+     │         └─ projeto/erp/
      │              ├─ cliente/                 # Domínio Cliente
      │              │    ├─ dto/                  # DTOs do Cliente (request/response)
      │              │    │    ├─ ClienteRequestDTO.java
