@@ -24,5 +24,40 @@ hs_err_pid*
 replay_pid*
 
 .idea/
+
+# Arquivos do Eclipse
+*.classpath
+*.project
+*.settings/
+
+# Arquivos do NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Arquivos do VS Code
+.vscode/
+
+# Arquivos do Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Arquivos do Gradle
 .gradle/
 build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Arquivos do Spring Boot
+spring.log
+
+# Arquivos temporários do sistema
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Arquivos de ambiente
+.env
