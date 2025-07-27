@@ -36,6 +36,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Docker para base de dados teste 
 - [x] Configurar conexão com banco de dados (application.yml e application-dev.yml)
 - [x] Configurar Lombok e Liquibase
+- [x] Swagger
 
 ### 🗄️ Módulo: Clientes
 - [ ] Criar entidade Cliente (Model)
@@ -99,7 +100,7 @@ Após a implementação das funcionalidades básicas, será realizada uma etapa 
 - Configurar um ambiente de logs adequado (Logback/Slf4j)
 - Preparar para deploy em ambiente de produção (perfis de ambiente)
 
-### Tarefas
+### Revisão das Tarefas
 - [ ] Revisar estrutura de pacotes seguindo uma abordagem orientada ao domínio
 - [ ] Aplicar princípios SOLID nas classes Service e Controller
 - [ ] Identificar e eliminar código duplicado
