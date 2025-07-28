@@ -29,7 +29,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 ## 📊 Progresso
 
-⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 7%
+🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ 16%
 
 ### 🏗️ Estrutura Inicial
 - [x] Configurar projeto Spring Boot (Gradle)
@@ -39,12 +39,12 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Swagger
 
 ### 🗄️ Módulo: Clientes
-- [ ] Criar base de dados Cliente
-- [ ] Criar entidade Cliente (Model)
-- [ ] Criar Repository Cliente (JpaRepository)
-- [ ]  Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
-- [ ] Criar Service Cliente (CRUD)
-- [ ] Criar Controller Cliente (API REST)
+- [x] Criar base de dados Cliente
+- [x] Criar entidade Cliente (Model)
+- [x] Criar Repository Cliente (JpaRepository)
+- [x]  Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
+- [x] Criar Service Cliente (CRUD)
+- [x] Criar Controller Cliente (API REST)
 - [ ] Implementar validações (Bean Validation)
 - [ ] Testes unitários (Service/Repository)
 
