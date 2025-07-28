@@ -39,32 +39,56 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Swagger
 
 ### 🗄️ Módulo: Clientes
+- [ ] Criar base de dados Cliente
 - [ ] Criar entidade Cliente (Model)
 - [ ] Criar Repository Cliente (JpaRepository)
+- [ ]  Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
 - [ ] Criar Service Cliente (CRUD)
 - [ ] Criar Controller Cliente (API REST)
 - [ ] Implementar validações (Bean Validation)
 - [ ] Testes unitários (Service/Repository)
 
+###  🧑‍💼 Módulo: Fornecedores Módulo: Fornecedores
+- [ ] Criar base de dados Fornecedor
+- [ ] Criar entidade Fornecedor (Model)
+- [ ] Criar Repository Fornecedor (JpaRepository)
+- [ ] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
+- [ ] Criar Service Fornecedor (CRUD)
+- [ ] Criar Controller Fornecedor (API REST)
+- [ ] Implementar validações (Bean Validation)
+- [ ] Testes unitários (Service/Repository)
+
 ### 🏷️ Módulo: Produtos
+- [ ] Criar base de dados Produto
 - [ ] Criar entidade Produto (Model)
 - [ ] Criar Repository Produto (JpaRepository)
+- [ ] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
 - [ ] Criar Service Produto (CRUD)
 - [ ] Criar Controller Produto (API REST)
 - [ ] Testes unitários (Service/Repository)
 
 ### 📦 Módulo: Estoque
-- [ ] Relacionar Produto com Estoque (OneToOne ou Embutido)
+- [ ] Ajuste base de dados para Produto com Estoque
+- [ ] Relacionar Produto com Estoque (OneToOne)
+- [ ] Criar entidade Estoque (Model)
+- [ ] Criar Repository Estoque (JpaRepository)
+- [ ] Implementar lógica de controle de estoque (entrada/saída)
+- [ ] Criar Service Estoque (CRUD)
+- [ ] Criar Controller Estoque (API REST)
+- [ ] Implementar validações (Bean Validation)
+- [ ] Testes unitários (Service/Repository)
 - [ ] Criar operações de Entrada/Saída de Estoque
 - [ ] API para consulta de saldo de estoque
 
 ### 🧾 Módulo: Pedidos/Vendas
+- [ ] Ajuste base de dados para Pedidos/Vendas
 - [ ] Criar entidade Pedido e ItemPedido
 - [ ] Implementar lógica de geração de Pedido (relacionar Cliente + Itens)
 - [ ] Atualizar Estoque ao concluir Pedido
 - [ ] API de Listagem e Consulta de Pedidos
 
 ### 🔒 Segurança (Auth)
+- [ ] Ajuste base de dados usuarios e login
 - [ ] Configurar Spring Security (JWT)
 - [ ] Criar roles de acesso (ADMIN, USER)
 - [ ] API de login/logout
