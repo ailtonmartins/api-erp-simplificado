@@ -5,6 +5,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <!-- Incluir todos os arquivos SQL na pasta db/migrations -->
+    <!-- Incluir todos os arquivos dentro de db/migrations/ -->
     <includeAll path="db/migrations/"/>
+
+    <!-- Carregar os inserts de DEV apenas quando contexto dev estiver ativo -->
+    <changeSet id="dev-inserts" author="dev" context="dev">
+        <sqlFile path="../migrations-dev/insert-dados-iniciais.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>
