@@ -13,6 +13,7 @@ public class ClienteRequestDTO {
     private String nome;
 
     @NotNull(message = "Email não pode ser nulo")
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "Email inválido")
     private String email;
 
     @NotNull(message = "Documento não pode ser nulo")
@@ -21,7 +22,7 @@ public class ClienteRequestDTO {
     private String documento;
 
     @NotNull(message = "Telefone não pode ser nulo")
-    @Size(min = 10, max = 15, message = "Telefone deve ter entre 10 e 15 caracteres")
+    @Size(min = 10, max = 15, message = "Telefone deve ter entre 10 e 15 caracteres e apenas números")
     @Pattern(regexp = "^[0-9]+$", message = "Telefone deve conter apenas números")
     private String telefone;
 

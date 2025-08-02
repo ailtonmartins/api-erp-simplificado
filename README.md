@@ -45,8 +45,8 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x]  Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
 - [x] Criar Service Cliente (CRUD)
 - [x] Criar Controller Cliente (API REST)
-- [ ] Implementar validações (Bean Validation)
-- [ ] Testes unitários (Service/Repository)
+- [x] Implementar validações (Bean Validation)
+- [x] Testes unitários (Service/Repository)
 
 ###  🧑‍💼 Módulo: Fornecedores Módulo: Fornecedores
 - [ ] Criar base de dados Fornecedor

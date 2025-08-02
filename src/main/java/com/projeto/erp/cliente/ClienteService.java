@@ -3,7 +3,9 @@ package com.projeto.erp.cliente;
 import com.projeto.erp.cliente.dto.ClienteRequestDTO;
 import com.projeto.erp.cliente.dto.ClienteResponseDTO;
 import com.projeto.erp.cliente.mapper.ClienteMapper;
+import com.projeto.erp.common.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +16,8 @@ public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
-    private final ClienteMapper mapper = ClienteMapper.INSTANCE;
+    @Autowired
+    private ClienteMapper mapper;
 
     public List<ClienteResponseDTO> findAll() {
         List<Cliente> clientes = clienteRepository.findAll();
@@ -34,6 +37,7 @@ public class ClienteService {
 
     public ClienteResponseDTO createCliente(ClienteRequestDTO cliente) {
         Cliente newCliente = mapper.toEntity(cliente);
+        validarEmailUnico(newCliente.getEmail());
         Cliente savedCliente = clienteRepository.save(newCliente);
         return mapper.toDTO(savedCliente);
     }
@@ -41,9 +45,12 @@ public class ClienteService {
     public ClienteResponseDTO updateCliente(Long id, ClienteRequestDTO cliente) {
         Cliente existingCliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado com o ID: " + id));
-
         existingCliente.setNome(cliente.getNome());
+        if(cliente.getEmail() != null && !cliente.getEmail().equals(existingCliente.getEmail())) {
+            validarEmailUnico(cliente.getEmail());
+        }
         existingCliente.setEmail(cliente.getEmail());
+
         existingCliente.setDocumento(cliente.getDocumento());
         existingCliente.setTelefone(cliente.getTelefone());
         existingCliente.setAtivo(cliente.getAtivo());
@@ -56,5 +63,11 @@ public class ClienteService {
         Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado com o ID: " + id));
         clienteRepository.delete(cliente);
+    }
+
+    public void validarEmailUnico(String email) {
+        if (clienteRepository.existsByEmail(email)) {
+            throw new BusinessException("E-mail já cadastrado", HttpStatus.CONFLICT);
+        }
     }
 }

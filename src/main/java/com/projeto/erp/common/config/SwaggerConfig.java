@@ -1,4 +1,4 @@
-package com.projeto.erp.infrastructure.configuration;
+package com.projeto.erp.common.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
