@@ -25,6 +25,8 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - Relatórios Simples (PDF ou Excel)
 - Autenticação e Autorização de Usuários (Role-based)
 
+## 🧪 Cobertura de TESTE
+
 ## 📋 Roadmap (Tasks)
 
 ## 📊 Progresso
@@ -217,10 +219,3 @@ src/
 ## Contato
 
 Ailton José Martins — [https://ailtonjm.com.br](https://ailtonjm.com.br)
-
-
-<!-- cobertura-jacoco-start -->
-| Tipo        | Cobertura |
-|-------------|-----------|
-| Instruções  | 72.8% |
-<!-- cobertura-jacoco-end -->

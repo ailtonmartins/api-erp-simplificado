@@ -73,13 +73,13 @@ def generate_coverage_table(counters):
     table.append('<!-- cobertura-jacoco-end -->')
     return '\n'.join(table)
 
-def insert_coverage_table_after_progress(content, table_md):
-    # Procura a seção de progresso e insere a tabela logo após
-    pattern = r'(## \uD83D\uDCCA Progresso.*?%)(\n)'
-    match = re.search(pattern, content, re.DOTALL)
+def insert_coverage_table_after_coverage_section(content, table_md):
+    # Procura a seção de cobertura de teste e insere a tabela logo após
+    pattern = r'(## [\uD83E\uDDDA\u200D\uD83D\uDCCA🧪📊] Cobertura de TESTE)(\n+)'
+    match = re.search(pattern, content)
     if match:
-        insert_pos = match.end(1)
-        return content[:insert_pos] + '\n' + table_md + content[insert_pos:]
+        insert_pos = match.end(0)
+        return content[:insert_pos] + table_md + content[insert_pos:]
     # fallback: adiciona ao final
     return content + '\n' + table_md
 
@@ -96,9 +96,9 @@ def main():
     updated_content = update_readme(content, progress_percent, progress_bar)
 
     counters = extract_jacoco_counters(JACOCO_XML)
-    table_md = generate_coverage_table(counters)
+    table_md = '\n' + generate_coverage_table(counters) + '\n'
     updated_content = remove_old_coverage_table(updated_content)
-    updated_content = insert_coverage_table_after_progress(updated_content, table_md)
+    updated_content = insert_coverage_table_after_coverage_section(updated_content, table_md)
 
     if content != updated_content:
         with open(README_FILE, 'w', encoding='utf-8') as f:
