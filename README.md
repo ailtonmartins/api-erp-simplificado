@@ -103,7 +103,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 ### 🚀 Deploy 
 - [ ] Dockerizar aplicação 
-- [ ] Deploy na minha VPN ( https://ailtonjm.com.br ) usando Actions do Github
+- [ ] Deploy na minha VPS ( https://ailtonjm.com.br ) usando Actions do Github
 
 ---
 
