@@ -68,16 +68,16 @@ jacocoTestReport {
 		html.required = true
 		html.outputLocation = layout.buildDirectory.dir('reports/jacoco')
 	}
-	afterEvaluate {
-		classDirectories.setFrom(files(classDirectories.files.collect {
+	classDirectories.setFrom(
+		files(classDirectories.files.collect {
 			fileTree(dir: it, exclude: [
 				'**/mapper/**',
 				'**/common/config/**',
 				'**/common/exception/**',
 				'**/*MapperImpl**'
 			])
-		}))
-	}
+		})
+	)
 }
 
 jacocoTestCoverageVerification {
