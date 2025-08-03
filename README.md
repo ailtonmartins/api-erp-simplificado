@@ -29,7 +29,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 ## 📊 Progresso
 
-🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ 16%
+🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ 20%
 
 ### 🏗️ Estrutura Inicial
 - [x] Configurar projeto Spring Boot (Gradle)
