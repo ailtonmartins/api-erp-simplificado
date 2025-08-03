@@ -125,4 +125,10 @@ class ClienteControleTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.nome").value("Cliente Atualizado"));
     }
+
+    @Test
+    void testDeletarCliente() throws Exception {
+        mockMvc.perform(delete("/clientes/deletar/{id}", 1L))
+                .andExpect(status().isNoContent());
+    }
 }
