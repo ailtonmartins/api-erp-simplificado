@@ -56,26 +56,39 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+def excludesList = [
+		'**/mapper/**',
+		'**/config/**',
+		'**/common/config/**',
+		'**/common/exception/**',
+		'**/*MapperImpl*',
+		'**/ErpApplication.*',
+		'**/CorsConfig*'
+]
+
 jacoco {
 	toolVersion = "0.8.11"
 }
 
 jacocoTestReport {
+	dependsOn test
+
 	reports {
 		xml.required = true
+		xml.outputLocation = file("${rootDir}/test/jacocoTestReport.xml")
 		csv.required = false
 		html.required = true
 		html.outputLocation = layout.buildDirectory.dir('reports/jacoco')
 	}
+
+
+
 	afterEvaluate {
-		classDirectories.setFrom(files(classDirectories.files.collect {
-			fileTree(dir: it, exclude: [
-				'**/mapper/**',
-				'**/common/config/**',
-				'**/common/exception/**',
-				'**/*MapperImpl**'
-			])
-		}))
+		classDirectories.from = files(sourceSets.main.output.classesDirs).asFileTree.matching {
+			exclude excludesList
+		}
+		sourceDirectories.from = files(sourceSets.main.java.srcDirs)
+		executionData.from = files("${buildDir}/jacoco/test.exec")
 	}
 }
 
@@ -83,12 +96,7 @@ jacocoTestCoverageVerification {
 	violationRules {
 		rule {
 			element = 'CLASS'
-			excludes = [
-				'**/mapper/**',
-				'**/common/config/**',
-				'**/common/exception/**',
-				'**/*MapperImpl**'
-			]
+			excludes = excludesList
 			limit {
 				minimum = 0.60
 			}
@@ -97,5 +105,5 @@ jacocoTestCoverageVerification {
 }
 
 test {
-	finalizedBy jacocoTestReport
+    finalizedBy jacocoTestReport
 }

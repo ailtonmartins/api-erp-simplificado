@@ -25,6 +25,27 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - Relatórios Simples (PDF ou Excel)
 - Autenticação e Autorização de Usuários (Role-based)
 
+> **Dados de Cobertura de TESTE e Progresso das tasks estão em desenvolvimento e serão atualizados conforme o projeto avança de forma automática.**
+- [update_progress.py](scripts/update_progress.py)
+- [update-progress.yml](.github/workflows/update-progress.yml)
+
+## 🧪 Cobertura de TESTE
+
+
+
+
+
+<!-- cobertura-jacoco-start -->
+| Tipo        | Cobertura | Coberto | Não Coberto |
+|-------------|-----------|---------|-------------|
+| Instruções  | 96.07% | 171 | 7 |
+| Branches    | 75.0% | 6 | 2 |
+| Linhas      | 94.74% | 36 | 2 |
+<!-- cobertura-jacoco-end -->
+- INSTRUCTION: Cobertura de instruções Java executadas (nível mais detalhado).
+- BRANCH: Cobertura de ramificações, como if/else e switch.
+- LINE: Cobertura de linhas de código-fonte.
+
 ## 📋 Roadmap (Tasks)
 
 ## 📊 Progresso
@@ -42,7 +63,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Criar base de dados Cliente
 - [x] Criar entidade Cliente (Model)
 - [x] Criar Repository Cliente (JpaRepository)
-- [x]  Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
+- [x] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
 - [x] Criar Service Cliente (CRUD)
 - [x] Criar Controller Cliente (API REST)
 - [x] Implementar validações (Bean Validation)

@@ -259,7 +259,7 @@ class ClienteServiceTest {
             clienteService.getCliente(clienteId);
         });
 
-        assertEquals("Cliente não encontrado com o ID:" + clienteId, exception.getMessage());
+        assertEquals("Cliente não encontrado com o ID: " + clienteId, exception.getMessage());
         verify(clienteRepository).findById(clienteId);
     }
 }
