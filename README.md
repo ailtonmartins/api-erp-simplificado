@@ -27,6 +27,17 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 ## 🧪 Cobertura de TESTE
 
+
+<!-- cobertura-jacoco-start -->
+| Tipo        | Cobertura | Coberto | Não Coberto |
+|-------------|-----------|---------|-------------|
+| Instruções  | 72.8% | 174 | 65 |
+| Branches    | 75.0% | 6 | 2 |
+| Linhas      | 77.08% | 37 | 11 |
+| Complexidade | 68.0% | 17 | 8 |
+| Métodos     | 71.43% | 15 | 6 |
+| Classes     | 60.0% | 3 | 2 |
+<!-- cobertura-jacoco-end -->
 ## 📋 Roadmap (Tasks)
 
 ## 📊 Progresso
