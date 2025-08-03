@@ -47,7 +47,7 @@ class ClienteServiceTest {
         when(clienteMapper.toDTO(savedCliente)).thenReturn(responseDTO);
 
         // Act
-        ClienteResponseDTO result = clienteService.createCliente(requestDTO);
+        ClienteResponseDTO result = clienteService.criarCliente(requestDTO);
 
         // Assert
         assertNotNull(result);
@@ -83,7 +83,7 @@ class ClienteServiceTest {
         when(clienteMapper.toDTO(clientes.get(1))).thenReturn(responseDTOs.get(1));
 
         // Act
-        List<ClienteResponseDTO> result = clienteService.findAll();
+        List<ClienteResponseDTO> result = clienteService.buscaTodosClientes();
 
         // Assert
         assertEquals(2, result.size());
@@ -91,7 +91,7 @@ class ClienteServiceTest {
     }
 
     @Test
-    void testUpdateCliente_QuandoClienteExiste() {
+    void testAtualizarCliente_QuandoClienteExiste() {
         // Arrange
         Long clienteId = 1L;
         ClienteRequestDTO requestDTO = new ClienteRequestDTO();
@@ -125,7 +125,7 @@ class ClienteServiceTest {
         when(clienteRepository.existsByEmail(requestDTO.getEmail())).thenReturn(false);
 
         // Act
-        ClienteResponseDTO resultado = clienteService.updateCliente(clienteId, requestDTO);
+        ClienteResponseDTO resultado = clienteService.atualizarCliente(clienteId, requestDTO);
 
         // Assert
         assertNotNull(resultado);
@@ -138,7 +138,7 @@ class ClienteServiceTest {
     }
 
     @Test
-    void testUpdateCliente_QuandoClienteNaoExiste() {
+    void testAtualizarCliente_QuandoClienteNaoExiste() {
         // Arrange
         Long clienteId = 1L;
         ClienteRequestDTO requestDTO = new ClienteRequestDTO();
@@ -146,7 +146,7 @@ class ClienteServiceTest {
 
         // Act & Assert
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            clienteService.updateCliente(clienteId, requestDTO);
+            clienteService.atualizarCliente(clienteId, requestDTO);
         });
         assertEquals("Cliente não encontrado com o ID: " + clienteId, exception.getMessage());
         verify(clienteRepository).findById(clienteId);
@@ -187,7 +187,7 @@ class ClienteServiceTest {
     }
 
     @Test
-    void testCreateCliente_QuandoEmailJaExiste() {
+    void testCriarCliente_QuandoEmailJaExiste() {
         // Arrange
         ClienteRequestDTO requestDTO = new ClienteRequestDTO();
         requestDTO.setEmail("existente@email.com");
@@ -199,7 +199,7 @@ class ClienteServiceTest {
 
         // Act & Assert
         BusinessException exception = assertThrows(BusinessException.class, () -> {
-            clienteService.createCliente(requestDTO);
+            clienteService.criarCliente(requestDTO);
         });
 
         assertEquals("E-mail já cadastrado", exception.getMessage());
@@ -209,7 +209,7 @@ class ClienteServiceTest {
     }
 
     @Test
-    void testUpdateCliente_QuandoNovoEmailJaExiste() {
+    void testAtualizarCliente_QuandoNovoEmailJaExiste() {
         // Arrange
         Long clienteId = 1L;
         ClienteRequestDTO requestDTO = new ClienteRequestDTO();
@@ -224,7 +224,7 @@ class ClienteServiceTest {
 
         // Act & Assert
         BusinessException exception = assertThrows(BusinessException.class, () -> {
-            clienteService.updateCliente(clienteId, requestDTO);
+            clienteService.atualizarCliente(clienteId, requestDTO);
         });
 
         assertEquals("E-mail já cadastrado", exception.getMessage());
@@ -235,13 +235,13 @@ class ClienteServiceTest {
     }
 
     @Test
-    void testFindAll_QuandoListaVazia() {
+    void testBuscaTodosClientes_QuandoListaVazia() {
         // Arrange
         when(clienteRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Act & Assert
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            clienteService.findAll();
+            clienteService.buscaTodosClientes();
         });
 
         assertEquals("Nenhum cliente encontrado", exception.getMessage());

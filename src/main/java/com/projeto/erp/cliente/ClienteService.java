@@ -17,40 +17,35 @@ public class ClienteService {
     ClienteRepository clienteRepository;
 
     @Autowired
-    private ClienteMapper mapper;
+    ClienteMapper mapper;
 
-    public List<ClienteResponseDTO> findAll() {
+    public List<ClienteResponseDTO> buscaTodosClientes() {
         List<Cliente> clientes = clienteRepository.findAll();
         if (clientes.isEmpty()) {
             throw new RuntimeException("Nenhum cliente encontrado");
         }
-        List<ClienteResponseDTO> dtos = clientes.stream().map(mapper::toDTO).toList();
-        return dtos;
+        return clientes.stream().map(mapper::toDTO).toList();
      }
 
     public ClienteResponseDTO getCliente( Long id ) {
-
-        var cliente = clienteRepository.findById(id).orElseThrow( () -> new RuntimeException("Cliente não encontrado com o ID:" + id)  );
-        ClienteResponseDTO dto = mapper.toDTO(cliente);
-        return dto;
+        Cliente cliente = buscaClienteByIdOrThrow(id);
+        return mapper.toDTO(cliente);
     }
 
-    public ClienteResponseDTO createCliente(ClienteRequestDTO cliente) {
+    public ClienteResponseDTO criarCliente(ClienteRequestDTO cliente) {
         Cliente newCliente = mapper.toEntity(cliente);
         validarEmailUnico(newCliente.getEmail());
         Cliente savedCliente = clienteRepository.save(newCliente);
         return mapper.toDTO(savedCliente);
     }
 
-    public ClienteResponseDTO updateCliente(Long id, ClienteRequestDTO cliente) {
-        Cliente existingCliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado com o ID: " + id));
+    public ClienteResponseDTO atualizarCliente(Long id, ClienteRequestDTO cliente) {
+        Cliente existingCliente = buscaClienteByIdOrThrow(id);
         existingCliente.setNome(cliente.getNome());
         if(cliente.getEmail() != null && !cliente.getEmail().equals(existingCliente.getEmail())) {
             validarEmailUnico(cliente.getEmail());
         }
         existingCliente.setEmail(cliente.getEmail());
-
         existingCliente.setDocumento(cliente.getDocumento());
         existingCliente.setTelefone(cliente.getTelefone());
         existingCliente.setAtivo(cliente.getAtivo());
@@ -60,14 +55,18 @@ public class ClienteService {
     }
 
     public void deleteCliente(Long id) {
-        Cliente cliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado com o ID: " + id));
+        Cliente cliente = buscaClienteByIdOrThrow(id);
         clienteRepository.delete(cliente);
     }
 
-    public void validarEmailUnico(String email) {
+    private void validarEmailUnico(String email) {
         if (clienteRepository.existsByEmail(email)) {
             throw new BusinessException("E-mail já cadastrado", HttpStatus.CONFLICT);
         }
+    }
+
+    private Cliente buscaClienteByIdOrThrow(Long id) {
+        return clienteRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Cliente não encontrado com o ID: " + id, HttpStatus.NOT_FOUND));
     }
 }

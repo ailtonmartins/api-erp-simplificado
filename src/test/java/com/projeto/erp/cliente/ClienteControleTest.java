@@ -73,7 +73,7 @@ class ClienteControleTest {
         c2.setId(2L);
         c2.setNome("Cliente 2");
         List<ClienteResponseDTO> lista = Arrays.asList(c1, c2);
-        when(clienteService.findAll()).thenReturn(lista);
+        when(clienteService.buscaTodosClientes()).thenReturn(lista);
 
         mockMvc.perform(get("/clientes/listar"))
                 .andExpect(status().isOk())
@@ -101,7 +101,7 @@ class ClienteControleTest {
         responseDTO.setTelefone("11999999999");
         responseDTO.setAtivo(true);
 
-        when(clienteService.createCliente(any(ClienteRequestDTO.class))).thenReturn(responseDTO);
+        when(clienteService.criarCliente(any(ClienteRequestDTO.class))).thenReturn(responseDTO);
 
         mockMvc.perform(post("/clientes/criar")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -117,7 +117,7 @@ class ClienteControleTest {
         ClienteResponseDTO responseDTO = new ClienteResponseDTO();
         responseDTO.setId(1L);
         responseDTO.setNome("Cliente Atualizado");
-        when(clienteService.updateCliente(eq(1L), any(ClienteRequestDTO.class))).thenReturn(responseDTO);
+        when(clienteService.atualizarCliente(eq(1L), any(ClienteRequestDTO.class))).thenReturn(responseDTO);
 
         mockMvc.perform(put("/clientes/atualizar/1")
                 .contentType(MediaType.APPLICATION_JSON)
