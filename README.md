@@ -25,6 +25,10 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - Relatórios Simples (PDF ou Excel)
 - Autenticação e Autorização de Usuários (Role-based)
 
+> **Dados de Cobertura de TESTE e Progresso das tasks estão em desenvolvimento e serão atualizados conforme o projeto avança de forma automática.**
+- [update_progress.py](scripts/update_progress.py)
+- [update-progress.yml](.github/workflows/update-progress.yml)
+
 ## 🧪 Cobertura de TESTE
 
 
