@@ -31,10 +31,7 @@ def extract_jacoco_counters(xml_path):
     counters = {
         'INSTRUCTION': {'missed': 0, 'covered': 0},
         'BRANCH': {'missed': 0, 'covered': 0},
-        'LINE': {'missed': 0, 'covered': 0},
-        'COMPLEXITY': {'missed': 0, 'covered': 0},
-        'METHOD': {'missed': 0, 'covered': 0},
-        'CLASS': {'missed': 0, 'covered': 0},
+        'LINE': {'missed': 0, 'covered': 0}
     }
     try:
         tree = ET.parse(xml_path)
@@ -62,9 +59,6 @@ def generate_coverage_table(counters):
         ('INSTRUCTION', 'Instruções'),
         ('BRANCH', 'Branches'),
         ('LINE', 'Linhas'),
-        ('COMPLEXITY', 'Complexidade'),
-        ('METHOD', 'Métodos'),
-        ('CLASS', 'Classes'),
     ]:
         missed = counters[ctype]['missed']
         covered = counters[ctype]['covered']

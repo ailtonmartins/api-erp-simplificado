@@ -38,6 +38,11 @@ Projeto FRONT do ERP — **[EM BREVE]**
 | Métodos     | 71.43% | 15 | 6 |
 | Classes     | 60.0% | 3 | 2 |
 <!-- cobertura-jacoco-end -->
+
+- INSTRUCTION: Cobertura de instruções Java executadas (nível mais detalhado).
+- BRANCH: Cobertura de ramificações, como if/else e switch.
+- LINE: Cobertura de linhas de código-fonte.
+
 ## 📋 Roadmap (Tasks)
 
 ## 📊 Progresso
