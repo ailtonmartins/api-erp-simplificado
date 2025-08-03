@@ -217,3 +217,10 @@ src/
 ## Contato
 
 Ailton José Martins — [https://ailtonjm.com.br](https://ailtonjm.com.br)
+
+
+<!-- cobertura-jacoco-start -->
+| Tipo        | Cobertura |
+|-------------|-----------|
+| Instruções  | 72.8% |
+<!-- cobertura-jacoco-end -->
