@@ -42,7 +42,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Criar base de dados Cliente
 - [x] Criar entidade Cliente (Model)
 - [x] Criar Repository Cliente (JpaRepository)
-- [x]  Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
+- [x] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
 - [x] Criar Service Cliente (CRUD)
 - [x] Criar Controller Cliente (API REST)
 - [x] Implementar validações (Bean Validation)
