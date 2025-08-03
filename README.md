@@ -28,17 +28,16 @@ Projeto FRONT do ERP — **[EM BREVE]**
 ## 🧪 Cobertura de TESTE
 
 
+
+
+
 <!-- cobertura-jacoco-start -->
 | Tipo        | Cobertura | Coberto | Não Coberto |
 |-------------|-----------|---------|-------------|
-| Instruções  | 72.8% | 174 | 65 |
+| Instruções  | 96.07% | 171 | 7 |
 | Branches    | 75.0% | 6 | 2 |
-| Linhas      | 77.08% | 37 | 11 |
-| Complexidade | 68.0% | 17 | 8 |
-| Métodos     | 71.43% | 15 | 6 |
-| Classes     | 60.0% | 3 | 2 |
+| Linhas      | 94.74% | 36 | 2 |
 <!-- cobertura-jacoco-end -->
-
 - INSTRUCTION: Cobertura de instruções Java executadas (nível mais detalhado).
 - BRANCH: Cobertura de ramificações, como if/else e switch.
 - LINE: Cobertura de linhas de código-fonte.
