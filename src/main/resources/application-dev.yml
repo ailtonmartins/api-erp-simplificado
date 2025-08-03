@@ -20,10 +20,7 @@ spring:
     change-log: classpath:db/changelog/db.changelog-master.xml
   devtools:
     restart:
-      enabled: true
-      additional:
-        - classpath:/src/main/resources/
-        - classpath:/src/main/java/
+      enabled: false
 
 springdoc:
   api-docs:

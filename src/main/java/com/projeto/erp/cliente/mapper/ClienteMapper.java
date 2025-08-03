@@ -4,12 +4,13 @@ import com.projeto.erp.cliente.Cliente;
 import com.projeto.erp.cliente.dto.ClienteRequestDTO;
 import com.projeto.erp.cliente.dto.ClienteResponseDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface ClienteMapper {
 
-    ClienteMapper INSTANCE = Mappers.getMapper(ClienteMapper.class);
     ClienteResponseDTO toDTO(Cliente cliente);
+
+    @Mapping(target = "id", ignore = true)
     Cliente toEntity(ClienteRequestDTO dto);
 }
