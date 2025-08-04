@@ -74,13 +74,13 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Testes unitários (Service/Repository)
 
 ###  🧑‍💼 Módulo: Fornecedores Módulo: Fornecedores
-- [ ] Criar base de dados Fornecedor
-- [ ] Criar entidade Fornecedor (Model)
-- [ ] Criar Repository Fornecedor (JpaRepository)
-- [ ] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
-- [ ] Criar Service Fornecedor (CRUD)
-- [ ] Criar Controller Fornecedor (API REST)
-- [ ] Implementar validações (Bean Validation)
+- [x] Criar base de dados Fornecedor
+- [x] Criar entidade Fornecedor (Model)
+- [x] Criar Repository Fornecedor (JpaRepository)
+- [x] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
+- [x] Criar Service Fornecedor (CRUD)
+- [x] Criar Controller Fornecedor (API REST)
+- [x] Implementar validações (Bean Validation)
 - [ ] Testes unitários (Service/Repository)
 
 ### 🏷️ Módulo: Produtos
