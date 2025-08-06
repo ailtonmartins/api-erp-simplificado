@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fornecedor")
+@RequestMapping("/fornecedores")
 @Tag(name = "Fornecedores", description = "Operações relacionadas aos Fornecedores")
 public class FornecedorControle {
 

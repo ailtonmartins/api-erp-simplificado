@@ -81,7 +81,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Criar Service Fornecedor (CRUD)
 - [x] Criar Controller Fornecedor (API REST)
 - [x] Implementar validações (Bean Validation)
-- [ ] Testes unitários (Service/Repository)
+- [x] Testes unitários (Service/Repository)
 
 ### 🏷️ Módulo: Produtos
 - [ ] Criar base de dados Produto
