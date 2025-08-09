@@ -31,12 +31,14 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 ## 🧪 Cobertura de TESTE
 
+
+
 <!-- cobertura-jacoco-start -->
 | Tipo        | Cobertura | Coberto | Não Coberto |
 |-------------|-----------|---------|-------------|
-| Instruções  | 100.0% | 357 | 0 |
-| Branches    | 75.0% | 12 | 4 |
-| Linhas      | 100.0% | 76 | 0 |
+| Instruções  | 72.34% | 395 | 151 |
+| Branches    | 60.0% | 12 | 8 |
+| Linhas      | 72.41% | 84 | 32 |
 <!-- cobertura-jacoco-end -->
 - INSTRUCTION: Cobertura de instruções Java executadas (nível mais detalhado).
 - BRANCH: Cobertura de ramificações, como if/else e switch.
@@ -46,7 +48,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 ## 📊 Progresso
 
-🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ 32%
+🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ 41%
 
 ### 🏗️ Estrutura Inicial
 - [x] Configurar projeto Spring Boot (Gradle)
