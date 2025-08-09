@@ -31,18 +31,6 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 ## 🧪 Cobertura de TESTE
 
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- cobertura-jacoco-start -->
 | Tipo        | Cobertura | Coberto | Não Coberto |
 |-------------|-----------|---------|-------------|
@@ -75,7 +63,9 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Criar Service Cliente (CRUD)
 - [x] Criar Controller Cliente (API REST)
 - [x] Implementar validações (Bean Validation)
+- [ ] Adicionar Paginação
 - [x] Testes unitários (Service/Repository)
+
 
 ###  🧑‍💼 Módulo: Fornecedores Módulo: Fornecedores
 - [x] Criar base de dados Fornecedor
@@ -85,16 +75,18 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Criar Service Fornecedor (CRUD)
 - [x] Criar Controller Fornecedor (API REST)
 - [x] Implementar validações (Bean Validation)
+- [ ] Adicionar Paginação
 - [x] Testes unitários (Service/Repository)
 
 ### 🏷️ Módulo: Produtos
-- [ ] Criar base de dados Produto
-- [ ] Criar entidade Produto (Model)
-- [ ] Criar Repository Produto (JpaRepository)
-- [ ] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
-- [ ] Criar Service Produto (CRUD)
-- [ ] Criar Controller Produto (API REST)
-- [ ] Testes unitários (Service/Repository)
+- [x] Criar base de dados Produto
+- [x] Criar entidade Produto (Model)
+- [x] Criar Repository Produto (JpaRepository)
+- [x] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
+- [x] Criar Service Produto (CRUD)
+- [x] Criar Controller Produto (API REST)
+- [ ] Adicionar Paginação
+- [x] Testes unitários (Service/Repository)
 
 ### 📦 Módulo: Estoque
 - [ ] Ajuste base de dados para Produto com Estoque
