@@ -111,8 +111,10 @@ class FornecedorControleTest {
 
     @Test
     void testAtualizarFornecedor() throws Exception {
+
         FornecedorRequestDTO requestDTO = new FornecedorRequestDTO();
         requestDTO.setNome("Fornecedor Atualizado");
+
         FornecedorResponseDTO responseDTO = new FornecedorResponseDTO();
         responseDTO.setId(1L);
         responseDTO.setNome("Fornecedor Atualizado");

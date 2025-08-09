@@ -65,7 +65,7 @@ public class FornecedorService {
         }
     }
 
-    private Fornecedor buscaFornecedorByIdOrThrow(Long id) {
+    public Fornecedor buscaFornecedorByIdOrThrow(Long id) {
         return fornecedorRepository.findById(id)
                 .orElseThrow(() -> new BusinessException("Fornecedor não encontrado com o ID: " + id, HttpStatus.NOT_FOUND));
     }
