@@ -39,8 +39,7 @@ public class ProdutoService {
     }
 
     public ProdutoResponseDTO buscarPorId(Long id) {
-        Produto produto = produtoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado"));
+        Produto produto = buscaProdutoByIdOrThrow(id);
         return mapper.toDTO(produto);
     }
 
