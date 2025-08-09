@@ -33,12 +33,14 @@ Projeto FRONT do ERP — **[EM BREVE]**
 
 
 
+
+
 <!-- cobertura-jacoco-start -->
 | Tipo        | Cobertura | Coberto | Não Coberto |
 |-------------|-----------|---------|-------------|
-| Instruções  | 72.34% | 395 | 151 |
-| Branches    | 60.0% | 12 | 8 |
-| Linhas      | 72.41% | 84 | 32 |
+| Instruções  | 100.0% | 536 | 0 |
+| Branches    | 75.0% | 15 | 5 |
+| Linhas      | 100.0% | 115 | 0 |
 <!-- cobertura-jacoco-end -->
 - INSTRUCTION: Cobertura de instruções Java executadas (nível mais detalhado).
 - BRANCH: Cobertura de ramificações, como if/else e switch.
