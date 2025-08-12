@@ -1,6 +1,7 @@
 package com.projeto.erp.produto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorRequestDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorResponseDTO;
 import com.projeto.erp.produto.dto.ProdutoRequestDTO;
@@ -68,18 +69,24 @@ class ProdutoControllerTest {
 
     @Test
     void testListarProdutos() throws Exception {
+        // Arrange
         ProdutoResponseDTO p1 = new ProdutoResponseDTO();
         p1.setId(1L);
         p1.setNome("Produto 1");
         ProdutoResponseDTO p2 = new ProdutoResponseDTO();
         p2.setId(2L);
         p2.setNome("Produto 2");
-        List<ProdutoResponseDTO> lista = Arrays.asList(p1, p2);
-        when(produtoService.listarTodos()).thenReturn(lista);
 
+        PageResponseDTO<ProdutoResponseDTO> lista = new PageResponseDTO<>(Arrays.asList(p1, p2), 0, 10, 2, 1, true, false);
+
+        // Act
+        when(produtoService.listarTodos(0,10)).thenReturn(lista);
+
+
+        // Assert
         mockMvc.perform(get("/produtos"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].nome").value("Produto 1"));
+                .andExpect(jsonPath("$.content[0].nome").value("Produto 1"));
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.projeto.erp.produto;
 
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.produto.dto.ProdutoRequestDTO;
 import com.projeto.erp.produto.dto.ProdutoResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -50,8 +51,9 @@ public class ProdutoController {
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "Lista de produtos retornada com sucesso")
     })
-    public ResponseEntity<List<ProdutoResponseDTO>> listarTodos() {
-        return ResponseEntity.ok(produtoService.listarTodos());
+    public ResponseEntity<PageResponseDTO<ProdutoResponseDTO>> listarTodos(@RequestParam(defaultValue = "0") Integer page,
+                                                                           @RequestParam(defaultValue = "10") Integer size) {
+        return ResponseEntity.ok(produtoService.listarTodos(page , size));
     }
 
     @PutMapping("/{id}")

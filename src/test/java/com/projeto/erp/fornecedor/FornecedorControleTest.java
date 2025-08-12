@@ -67,6 +67,7 @@ class FornecedorControleTest {
 
     @Test
     void testListFornecedor() throws Exception {
+
         FornecedorResponseDTO c1 = new FornecedorResponseDTO();
         c1.setId(1L);
         c1.setNome("Fornecedor 1");
@@ -74,6 +75,7 @@ class FornecedorControleTest {
         c2.setId(2L);
         c2.setNome("Fornecedor 2");
         PageResponseDTO<FornecedorResponseDTO> lista = new PageResponseDTO<>(Arrays.asList(c1, c2), 0, 10, 2, 1, true, false);
+
         when(fornecedorService.buscaTodosFornecedores(0,10)).thenReturn(lista);
 
         mockMvc.perform(get("/fornecedores/listar"))
