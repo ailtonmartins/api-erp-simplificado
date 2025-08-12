@@ -3,6 +3,7 @@ package com.projeto.erp.cliente;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.projeto.erp.cliente.dto.ClienteRequestDTO;
 import com.projeto.erp.cliente.dto.ClienteResponseDTO;
+import com.projeto.erp.common.dto.PageResponseDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -72,12 +73,12 @@ class ClienteControleTest {
         ClienteResponseDTO c2 = new ClienteResponseDTO();
         c2.setId(2L);
         c2.setNome("Cliente 2");
-        List<ClienteResponseDTO> lista = Arrays.asList(c1, c2);
-        when(clienteService.buscaTodosClientes()).thenReturn(lista);
+        PageResponseDTO<ClienteResponseDTO> lista = new PageResponseDTO<>(Arrays.asList(c1, c2), 0, 10, 2, 1, true, false);
+        when(clienteService.buscaTodosClientes(0,10)).thenReturn(lista);
 
         mockMvc.perform(get("/clientes/listar"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].nome").value("Cliente 1"));
+                .andExpect( jsonPath("$.content[0].nome").value("Cliente 1"));
     }
 
     @Test

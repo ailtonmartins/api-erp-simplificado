@@ -1,10 +1,14 @@
 package com.projeto.erp.fornecedor;
 
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.common.exception.BusinessException;
 import com.projeto.erp.fornecedor.dto.FornecedorRequestDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorResponseDTO;
 import com.projeto.erp.fornecedor.mapper.FornecedorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +23,23 @@ public class FornecedorService {
     @Autowired
     FornecedorMapper mapper;
 
-    public List<FornecedorResponseDTO> buscaTodosFornecedors() {
-        List<Fornecedor> fornecedores = fornecedorRepository.findAll();
-        if (fornecedores.isEmpty()) {
+    public PageResponseDTO<FornecedorResponseDTO> buscaTodosFornecedores(Integer page, Integer size ) {
+        Pageable pageable = PageRequest.of( page, size );
+        Page<Fornecedor> fornecedoresPage = fornecedorRepository.findAll(pageable);
+        if (fornecedoresPage.isEmpty()) {
             throw new BusinessException("Nenhum Fornecedor encontrado" , HttpStatus.NOT_FOUND);
         }
-        return fornecedores.stream().map(mapper::toDTO).toList();
+        List<FornecedorResponseDTO> fonecedoresDto = fornecedoresPage.getContent().stream().map(mapper::toDTO).toList();
+
+        return new PageResponseDTO<> (
+                fonecedoresDto,
+                fornecedoresPage.getNumber(),
+                fornecedoresPage.getSize(),
+                fornecedoresPage.getTotalElements(),
+                fornecedoresPage.getTotalPages(),
+                fornecedoresPage.isFirst(),
+                fornecedoresPage.isLast()
+        );
      }
 
     public FornecedorResponseDTO getFornecedor( Long id ) {

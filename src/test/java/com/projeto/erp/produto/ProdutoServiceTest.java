@@ -1,7 +1,10 @@
 package com.projeto.erp.produto;
 
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.common.exception.BusinessException;
+import com.projeto.erp.fornecedor.Fornecedor;
 import com.projeto.erp.fornecedor.FornecedorService;
+import com.projeto.erp.fornecedor.dto.FornecedorResponseDTO;
 import com.projeto.erp.produto.dto.ProdutoRequestDTO;
 import com.projeto.erp.produto.dto.ProdutoResponseDTO;
 import com.projeto.erp.produto.mapper.ProdutoMapper;
@@ -10,6 +13,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;
@@ -80,19 +87,20 @@ class ProdutoServiceTest {
     @Test
     void testListarTodos() {
         // Arrange
-        List<Produto> produtoes = Arrays.asList(new Produto(), new Produto());
+        Page<Produto> fornecedores = new PageImpl<>(Arrays.asList(new Produto(), new Produto()));
         List<ProdutoResponseDTO> responseDTOs = Arrays.asList(new ProdutoResponseDTO(), new ProdutoResponseDTO());
+        Pageable pageable = PageRequest.of(0, 10);
 
-        when(produtoRepository.findAll()).thenReturn(produtoes);
-        when(produtoMapper.toDTO(produtoes.get(0))).thenReturn(responseDTOs.get(0));
-        when(produtoMapper.toDTO(produtoes.get(1))).thenReturn(responseDTOs.get(1));
+        when(produtoRepository.findAll(pageable)).thenReturn(fornecedores);
+        when(produtoMapper.toDTO(fornecedores.getContent().get(0))).thenReturn(responseDTOs.get(0));
+        when(produtoMapper.toDTO(fornecedores.getContent().get(1))).thenReturn(responseDTOs.get(1));
 
         // Act
-        List<ProdutoResponseDTO> result = produtoService.listarTodos();
+        PageResponseDTO<ProdutoResponseDTO> result = produtoService.listarTodos(0,10);
 
         // Assert
-        assertEquals(2, result.size());
-        verify(produtoRepository, times(1)).findAll();
+        assertEquals(2, result.getTotalElements());
+        verify(produtoRepository, times(1)).findAll(pageable);
     }
 
     @Test

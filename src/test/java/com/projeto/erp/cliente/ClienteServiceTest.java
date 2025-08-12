@@ -3,12 +3,17 @@ package com.projeto.erp.cliente;
 import com.projeto.erp.cliente.dto.ClienteRequestDTO;
 import com.projeto.erp.cliente.dto.ClienteResponseDTO;
 import com.projeto.erp.cliente.mapper.ClienteMapper;
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.common.exception.BusinessException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;
@@ -75,19 +80,20 @@ class ClienteServiceTest {
     @Test
     void testListarTodos() {
         // Arrange
-        List<Cliente> clientes = Arrays.asList(new Cliente(), new Cliente());
+        Page<Cliente> clientes = new PageImpl<>(Arrays.asList(new Cliente(), new Cliente()));
         List<ClienteResponseDTO> responseDTOs = Arrays.asList(new ClienteResponseDTO(), new ClienteResponseDTO());
+        Pageable pageable = PageRequest.of(0, 10);
 
-        when(clienteRepository.findAll()).thenReturn(clientes);
-        when(clienteMapper.toDTO(clientes.get(0))).thenReturn(responseDTOs.get(0));
-        when(clienteMapper.toDTO(clientes.get(1))).thenReturn(responseDTOs.get(1));
+        when(clienteRepository.findAll(pageable)).thenReturn(clientes);
+        when(clienteMapper.toDTO(clientes.getContent().get(0))).thenReturn(responseDTOs.get(0));
+        when(clienteMapper.toDTO(clientes.getContent().get(1))).thenReturn(responseDTOs.get(1));
 
         // Act
-        List<ClienteResponseDTO> result = clienteService.buscaTodosClientes();
+        PageResponseDTO<ClienteResponseDTO> result = clienteService.buscaTodosClientes(0,10);
 
         // Assert
-        assertEquals(2, result.size());
-        verify(clienteRepository, times(1)).findAll();
+        assertEquals(2, result.getTotalElements());
+        verify(clienteRepository, times(1)).findAll(pageable);
     }
 
     @Test
@@ -237,15 +243,16 @@ class ClienteServiceTest {
     @Test
     void testBuscaTodosClientes_QuandoListaVazia() {
         // Arrange
-        when(clienteRepository.findAll()).thenReturn(Collections.emptyList());
+        Pageable pageable = PageRequest.of(0, 10);
+        when(clienteRepository.findAll(pageable)).thenReturn(Page.empty());
 
         // Act & Assert
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            clienteService.buscaTodosClientes();
+            clienteService.buscaTodosClientes(0,10);
         });
 
         assertEquals("Nenhum cliente encontrado", exception.getMessage());
-        verify(clienteRepository).findAll();
+        verify(clienteRepository).findAll(pageable);
     }
 
     @Test

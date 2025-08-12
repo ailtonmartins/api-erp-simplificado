@@ -1,5 +1,6 @@
 package com.projeto.erp.fornecedor;
 
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorRequestDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/fornecedores")
@@ -38,8 +37,9 @@ public class FornecedorControle {
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Lista de fornecedors retornada com sucesso")
     })
-    public List<FornecedorResponseDTO> listFornecedor() {
-        return fornecedorService.buscaTodosFornecedors();
+    public PageResponseDTO<FornecedorResponseDTO> listFornecedor( @RequestParam(defaultValue = "0") Integer page,
+                                                                  @RequestParam(defaultValue = "10") Integer size) {
+        return fornecedorService.buscaTodosFornecedores(page , size );
     }
 
     @PostMapping("/criar")

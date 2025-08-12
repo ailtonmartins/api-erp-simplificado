@@ -2,6 +2,7 @@ package com.projeto.erp.cliente;
 
 import com.projeto.erp.cliente.dto.ClienteRequestDTO;
 import com.projeto.erp.cliente.dto.ClienteResponseDTO;
+import com.projeto.erp.common.dto.PageResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -34,12 +35,14 @@ public class ClienteControle {
     }
 
     @GetMapping(value = "/listar")
-    @Operation(summary = "Lista todos os clientes", description = "Retorna uma lista de todos os clientes cadastrados")
+    @Operation(summary = "Lista todos os clientes", description = "Retorna uma lista paginada de todos os clientes cadastrados")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Lista de clientes retornada com sucesso")
+            @ApiResponse(responseCode = "200", description = "Lista de clientes retornada com sucesso")
     })
-    public List<ClienteResponseDTO> listCliente() {
-        return clienteService.buscaTodosClientes();
+    public PageResponseDTO<ClienteResponseDTO> listCliente(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size) {
+        return clienteService.buscaTodosClientes(page, size);
     }
 
     @PostMapping("/criar")

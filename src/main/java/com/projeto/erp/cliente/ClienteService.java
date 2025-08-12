@@ -3,8 +3,14 @@ package com.projeto.erp.cliente;
 import com.projeto.erp.cliente.dto.ClienteRequestDTO;
 import com.projeto.erp.cliente.dto.ClienteResponseDTO;
 import com.projeto.erp.cliente.mapper.ClienteMapper;
+
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.common.exception.BusinessException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +25,29 @@ public class ClienteService {
     @Autowired
     ClienteMapper mapper;
 
-    public List<ClienteResponseDTO> buscaTodosClientes() {
-        List<Cliente> clientes = clienteRepository.findAll();
-        if (clientes.isEmpty()) {
+    public PageResponseDTO<ClienteResponseDTO> buscaTodosClientes(Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Cliente> clientesPage = clienteRepository.findAll(pageable);
+
+        if (clientesPage.isEmpty()) {
             throw new RuntimeException("Nenhum cliente encontrado");
         }
-        return clientes.stream().map(mapper::toDTO).toList();
-     }
+
+        List<ClienteResponseDTO> clientesDTO = clientesPage.getContent()
+                .stream()
+                .map(mapper::toDTO)
+                .toList();
+
+        return new PageResponseDTO<>(
+                clientesDTO,
+                clientesPage.getNumber(),
+                clientesPage.getSize(),
+                clientesPage.getTotalElements(),
+                clientesPage.getTotalPages(),
+                clientesPage.isFirst(),
+                clientesPage.isLast()
+        );
+    }
 
     public ClienteResponseDTO getCliente( Long id ) {
         Cliente cliente = buscaClienteByIdOrThrow(id);
