@@ -1,8 +1,7 @@
 package com.projeto.erp.fornecedor;
 
-import com.projeto.erp.fornecedor.Fornecedor;
-import com.projeto.erp.fornecedor.FornecedorRepository;
-import com.projeto.erp.fornecedor.FornecedorService;
+import com.projeto.erp.cliente.dto.ClienteResponseDTO;
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorRequestDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorResponseDTO;
 import com.projeto.erp.fornecedor.mapper.FornecedorMapper;
@@ -12,6 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;
@@ -78,19 +81,20 @@ class FornecedorServiceTest {
     @Test
     void testListarTodos() {
         // Arrange
-        List<Fornecedor> fornecedores = Arrays.asList(new Fornecedor(), new Fornecedor());
+        Page<Fornecedor> fornecedores = new PageImpl<>(Arrays.asList(new Fornecedor(), new Fornecedor()));
         List<FornecedorResponseDTO> responseDTOs = Arrays.asList(new FornecedorResponseDTO(), new FornecedorResponseDTO());
+        Pageable pageable = PageRequest.of(0, 10);
 
-        when(fornecedorRepository.findAll()).thenReturn(fornecedores);
-        when(fornecedorMapper.toDTO(fornecedores.get(0))).thenReturn(responseDTOs.get(0));
-        when(fornecedorMapper.toDTO(fornecedores.get(1))).thenReturn(responseDTOs.get(1));
+        when(fornecedorRepository.findAll(pageable)).thenReturn(fornecedores);
+        when(fornecedorMapper.toDTO(fornecedores.getContent().get(0))).thenReturn(responseDTOs.get(0));
+        when(fornecedorMapper.toDTO(fornecedores.getContent().get(1))).thenReturn(responseDTOs.get(1));
 
         // Act
-        List<FornecedorResponseDTO> result = fornecedorService.buscaTodosFornecedors();
+        PageResponseDTO<FornecedorResponseDTO> result = fornecedorService.buscaTodosFornecedores(0,10);
 
         // Assert
-        assertEquals(2, result.size());
-        verify(fornecedorRepository, times(1)).findAll();
+        assertEquals(2, result.getTotalElements());
+        verify(fornecedorRepository, times(1)).findAll(pageable);
     }
 
     @Test
@@ -238,17 +242,18 @@ class FornecedorServiceTest {
     }
 
     @Test
-    void testBuscaTodosFornecedors_QuandoListaVazia() {
+    void testBuscaTodosFornecedores_QuandoListaVazia() {
         // Arrange
-        when(fornecedorRepository.findAll()).thenReturn(Collections.emptyList());
+        Pageable pageable = PageRequest.of(0, 10);
+        when(fornecedorRepository.findAll(pageable)).thenReturn(Page.empty());
 
         // Act & Assert
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            fornecedorService.buscaTodosFornecedors();
+            fornecedorService.buscaTodosFornecedores(0, 10);
         });
 
         assertEquals("Nenhum Fornecedor encontrado", exception.getMessage());
-        verify(fornecedorRepository).findAll();
+        verify(fornecedorRepository).findAll(pageable);
     }
 
     @Test

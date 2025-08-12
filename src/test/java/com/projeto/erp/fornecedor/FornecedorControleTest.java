@@ -1,6 +1,7 @@
 package com.projeto.erp.fornecedor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.projeto.erp.common.dto.PageResponseDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorRequestDTO;
 import com.projeto.erp.fornecedor.dto.FornecedorResponseDTO;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -71,12 +73,12 @@ class FornecedorControleTest {
         FornecedorResponseDTO c2 = new FornecedorResponseDTO();
         c2.setId(2L);
         c2.setNome("Fornecedor 2");
-        List<FornecedorResponseDTO> lista = Arrays.asList(c1, c2);
-        when(fornecedorService.buscaTodosFornecedors()).thenReturn(lista);
+        PageResponseDTO<FornecedorResponseDTO> lista = new PageResponseDTO<>(Arrays.asList(c1, c2), 0, 10, 2, 1, true, false);
+        when(fornecedorService.buscaTodosFornecedores(0,10)).thenReturn(lista);
 
         mockMvc.perform(get("/fornecedores/listar"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].nome").value("Fornecedor 1"));
+                .andExpect(jsonPath("$.content[0].nome").value("Fornecedor 1"));
     }
 
     @Test

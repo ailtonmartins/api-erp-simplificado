@@ -40,8 +40,8 @@ public class ClienteControle {
             @ApiResponse(responseCode = "200", description = "Lista de clientes retornada com sucesso")
     })
     public PageResponseDTO<ClienteResponseDTO> listCliente(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size) {
         return clienteService.buscaTodosClientes(page, size);
     }
 

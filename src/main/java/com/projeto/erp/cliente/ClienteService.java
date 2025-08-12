@@ -25,7 +25,7 @@ public class ClienteService {
     @Autowired
     ClienteMapper mapper;
 
-    public PageResponseDTO<ClienteResponseDTO> buscaTodosClientes(int page, int size) {
+    public PageResponseDTO<ClienteResponseDTO> buscaTodosClientes(Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Cliente> clientesPage = clienteRepository.findAll(pageable);
 
