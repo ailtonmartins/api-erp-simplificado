@@ -67,7 +67,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Criar Service Cliente (CRUD)
 - [x] Criar Controller Cliente (API REST)
 - [x] Implementar validações (Bean Validation)
-- [ ] Adicionar Paginação
+- [x] Adicionar Paginação
 - [x] Testes unitários (Service/Repository)
 
 
@@ -79,7 +79,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Criar Service Fornecedor (CRUD)
 - [x] Criar Controller Fornecedor (API REST)
 - [x] Implementar validações (Bean Validation)
-- [ ] Adicionar Paginação
+- [x] Adicionar Paginação
 - [x] Testes unitários (Service/Repository)
 
 ### 🏷️ Módulo: Produtos
@@ -89,7 +89,7 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Implementar camada de DTOs e Mappers (MapStruct) para isolamento do domínio.
 - [x] Criar Service Produto (CRUD)
 - [x] Criar Controller Produto (API REST)
-- [ ] Adicionar Paginação
+- [x] Adicionar Paginação
 - [x] Testes unitários (Service/Repository)
 
 ### 📦 Módulo: Estoque
