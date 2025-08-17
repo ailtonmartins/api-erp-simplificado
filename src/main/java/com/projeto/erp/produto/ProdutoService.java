@@ -100,7 +100,7 @@ public class ProdutoService {
         }
     }
 
-    private Produto buscaProdutoByIdOrThrow(Long id) {
+    public Produto buscaProdutoByIdOrThrow(Long id) {
         return produtoRepository.findById(id)
                 .orElseThrow(() -> new BusinessException("Produto não encontrado com o ID: " + id, HttpStatus.NOT_FOUND));
     }
