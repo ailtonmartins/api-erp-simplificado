@@ -18,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class EstoqueRepositoryTest {
 
     @Autowired
-    private EstoqueRepository estoqueRepository;
+    EstoqueRepository estoqueRepository;
 
     @Autowired
-    private ProdutoRepository produtoRepository;
+    ProdutoRepository produtoRepository;
 
     @Test
     @DisplayName("Deve salvar e buscar estoque por produto_id e verificar existsByProdutoId")
@@ -40,7 +40,7 @@ class EstoqueRepositoryTest {
                 .quantidade(15)
                 .build();
 
-        estoque = estoqueRepository.save(estoque);
+        estoqueRepository.save(estoque);
 
         Optional<Estoque> found = estoqueRepository.findByProdutoId(produto.getId());
         assertTrue(found.isPresent());

@@ -6,6 +6,7 @@ import com.projeto.erp.estoque.dto.EstoqueResponseDTO;
 import com.projeto.erp.estoque.mapper.EstoqueMapper;
 import com.projeto.erp.produto.Produto;
 import com.projeto.erp.produto.ProdutoService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -33,9 +34,18 @@ class EstoqueServiceTest {
     @InjectMocks
     private EstoqueService estoqueService;
 
+    AutoCloseable mocksCloseable;
+
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        mocksCloseable = MockitoAnnotations.openMocks(this);
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        if (mocksCloseable != null) {
+            mocksCloseable.close();
+        }
     }
 
     @Test
