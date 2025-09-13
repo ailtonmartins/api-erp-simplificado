@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class ProdutoResponseDTO {
+public class ProdutoResponseSemQtdDTO {
 
     @Schema(example = "1")
     private Long id;
@@ -28,8 +28,4 @@ public class ProdutoResponseDTO {
 
     @Schema(example = "Dell Computadores")
     private String fornecedorNome;
-
-    @Schema(example = "15")
-    private Integer quantidadeEstoque;
 }
-

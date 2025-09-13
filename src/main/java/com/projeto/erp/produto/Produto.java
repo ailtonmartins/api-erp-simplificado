@@ -1,5 +1,6 @@
 package com.projeto.erp.produto;
 
+import com.projeto.erp.estoque.Estoque;
 import com.projeto.erp.fornecedor.Fornecedor;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -30,5 +31,8 @@ public class Produto {
     @ManyToOne(optional = false)
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
+
+    @OneToOne(mappedBy = "produto", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    private Estoque estoque;
 }
 
