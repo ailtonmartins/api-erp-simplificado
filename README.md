@@ -95,17 +95,17 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] Testes unitários (Service/Repository)
 
 ### 📦 Módulo: Estoque
-- [ ] Ajuste base de dados para Produto com Estoque
-- [ ] Relacionar Produto com Estoque (OneToOne)
-- [ ] Criar entidade Estoque (Model)
-- [ ] Criar Repository Estoque (JpaRepository)
-- [ ] Implementar lógica de controle de estoque (entrada/saída)
-- [ ] Criar Service Estoque (CRUD)
-- [ ] Criar Controller Estoque (API REST)
-- [ ] Implementar validações (Bean Validation)
-- [ ] Testes unitários (Service/Repository)
-- [ ] Criar operações de Entrada/Saída de Estoque
-- [ ] API para consulta de saldo de estoque
+- [x] Ajuste base de dados para Produto com Estoque
+- [x] Relacionar Produto com Estoque (OneToOne)
+- [x] Criar entidade Estoque (Model)
+- [x] Criar Repository Estoque (JpaRepository)
+- [x] Implementar lógica de controle de estoque (entrada/saída)
+- [x] Criar Service Estoque (CRUD)
+- [x] Criar Controller Estoque (API REST)
+- [x] Implementar validações (Bean Validation)
+- [x] Testes unitários (Service/Repository)
+- [x] Criar operações de Entrada/Saída de Estoque
+- [x] API para consulta de saldo de estoque
 
 ### 🧾 Módulo: Pedidos/Vendas
 - [ ] Ajuste base de dados para Pedidos/Vendas
