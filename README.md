@@ -112,16 +112,16 @@ Projeto FRONT do ERP — **[EM BREVE]**
 - [x] API para consulta de saldo de estoque
 
 ### 🧾 Módulo: Pedidos/Vendas
-- [ ] Ajuste base de dados para Pedidos/Vendas
-- [ ] Criar entidade Pedido e ItemPedido
-- [ ] Implementar lógica de geração de Pedido (relacionar Cliente + Itens)
-- [ ] Atualizar Estoque ao concluir Pedido
-- [ ] API de Listagem e Consulta de Pedidos
+- [x] Ajuste base de dados para Pedidos/Vendas
+- [x] Criar entidade Pedido e ItemPedido
+- [x] Implementar lógica de geração de Pedido (relacionar Cliente + Itens)
+- [x] Atualizar Estoque ao concluir Pedido
+- [x] API de Listagem e Consulta de Pedidos
 
 ### 🔒 Segurança (Auth)
 - [ ] Ajuste base de dados usuarios e login
 - [ ] Configurar Spring Security (JWT)
-- [ ] Criar roles de acesso (ADMIN, USER)
+- [ ] Criar roles de acesso (ADMIN, VENDEDOR)
 - [ ] API de login/logout
 
 ### 📊 Relatórios
