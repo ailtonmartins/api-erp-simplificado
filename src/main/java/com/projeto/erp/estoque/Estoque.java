@@ -27,4 +27,15 @@ public class Estoque {
     @Builder.Default
     @Min(0)
     private Integer quantidade = 0;
+
+    public void reduzirQuantidade(Integer quantidade) {
+        if (this.quantidade < quantidade) {
+            throw new IllegalArgumentException("Quantidade insuficiente em estoque");
+        }
+        this.quantidade -= quantidade;
+    }
+
+    public void aumentarQuantidade(Integer quantidade) {
+        this.quantidade += quantidade;
+    }
 }
